@@ -44,8 +44,8 @@
 <h2>3. การเตือน</h2>
 <p>การเตือนเป็นการแจ้งเตือนในเครื่อง (local notification) ที่ iPhone ตั้งเวลาไว้เอง ไม่ใช้เซิร์ฟเวอร์ส่งการแจ้งเตือน (push) แอปขอสิทธิ์ก่อนเสมอ และคุณปิดได้ในการตั้งค่าของ iPhone</p>
 
-<h2>4. การเพิ่มรายการด้วยเสียง</h2>
-<p>หากคุณใช้การพูดเพื่อเพิ่มรายการ แอปจะขอสิทธิ์ไมโครโฟนและการรู้จำเสียง การแปลงเสียงเป็นข้อความทำบน iPhone เท่านั้น (Apple Speech แบบออฟไลน์) หากเครื่องไม่รองรับภาษานั้นแบบออฟไลน์ ฟีเจอร์นี้จะไม่ทำงานแทนการส่งเสียงออกนอกเครื่อง แอปไม่บันทึกไฟล์เสียง และไม่ส่งเสียงไปที่ Firebase ข้อความที่ได้ใช้กรอกฟอร์มให้คุณตรวจก่อนบันทึกเท่านั้น</p>
+<h2>4. ปฏิทิน Apple (ไม่บังคับ)</h2>
+<p>หากคุณเปิด “แสดงวันสำคัญในปฏิทิน Apple” ในการตั้งค่า แอปจะขอสิทธิ์เข้าถึงปฏิทิน แล้วสร้างปฏิทินชื่อ “Datebell” ของแอปเอง ที่มีวันชำระเงิน วันหมดช่วงทดลองใช้ วันหมดอายุเอกสาร และวันหมดประกัน (ชื่อรายการและราคา) แอปเขียนเฉพาะปฏิทิน Datebell ไม่อ่าน ไม่แก้ไข และไม่ส่งนัดหมายในปฏิทินอื่นของคุณออกนอกเครื่อง ปฏิทิน Datebell อยู่ในบัญชีปฏิทินหลักของ iPhone หากเป็น iCloud Apple จะซิงก์ปฏิทินนี้ไปยังอุปกรณ์อื่นของคุณตามเงื่อนไขของ Apple การปิดสวิตช์จะลบปฏิทิน Datebell ออก</p>
 
 <h2>5. การซื้อ Pro</h2>
 <p>Pro ซื้อครั้งเดียวผ่าน App Store การชำระเงินดำเนินการโดย Apple ตาม <a href="https://www.apple.com/legal/privacy/th/">นโยบายความเป็นส่วนตัวของ Apple</a> แอปรับจาก Apple เพียงว่าบัญชี Apple ของคุณมีสิทธิ์ Pro หรือไม่ เราไม่เห็นข้อมูลการชำระเงินของคุณ และสิทธิ์ Pro ไม่ได้ผูกกับบัญชี Datebell Apple ให้รายงานยอดดาวน์โหลดและยอดขายแบบรวมแก่นักพัฒนา และหากคุณเปิด “แชร์กับนักพัฒนาแอป” ในการตั้งค่า iPhone Apple อาจส่งรายงานการขัดข้องและสถิติการใช้งานที่ไม่ระบุตัวตนให้เราด้วย</p>
@@ -67,7 +67,7 @@
 <li><strong>ออกจากระบบ:</strong> รายการยังอยู่ในบัญชีจนกว่าคุณจะลบบัญชี</li>
 <li>หากลบบัญชีในแอปไม่ได้ ส่งอีเมลถึงเราจากอีเมลของบัญชีนั้น แล้วเราจะลบให้ภายใน 30 วัน</li>
 </ul>
-<p>คุณถอนความยินยอมได้ทุกเมื่อ โดยออกจากระบบหรือลบบัญชี และปิดสิทธิ์การแจ้งเตือน ไมโครโฟน หรือการรู้จำเสียงในการตั้งค่าของ iPhone</p>
+<p>คุณถอนความยินยอมได้ทุกเมื่อ โดยออกจากระบบหรือลบบัญชี และปิดสิทธิ์การแจ้งเตือนหรือปฏิทินในการตั้งค่าของ iPhone</p>
 
 <h2>10. สิทธิของคุณ</h2>
 <p>ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 คุณมีสิทธิขอเข้าถึงและขอสำเนา ขอรับหรือให้โอนข้อมูล คัดค้าน ขอลบ ขอระงับการใช้ และขอแก้ไขข้อมูลส่วนบุคคล และร้องเรียนต่อสำนักงานคณะกรรมการคุ้มครองข้อมูลส่วนบุคคล คุณแก้ไข ส่งออก และลบข้อมูลได้เองในแอป หรืออีเมลถึงเรา และเราจะตอบภายใน 30 วัน</p>
@@ -114,8 +114,8 @@
 <h2>3. Reminders</h2>
 <p>Reminders are local notifications that your iPhone schedules itself. No server sends push notifications. The app asks for permission first, and you can turn it off in iPhone Settings.</p>
 
-<h2>4. Voice entry</h2>
-<p>If you add an item by speaking, the app asks for microphone and speech recognition permission. Speech is turned into text on your iPhone only, using Apple's on-device recognition. If your iPhone cannot recognise a language offline, the feature stops rather than sending audio off the device. The app does not save recordings and never sends audio to Firebase. The text only fills in the form for you to check before saving.</p>
+<h2>4. Apple Calendar (optional)</h2>
+<p>If you turn on Show dates in Apple Calendar in Settings, the app asks for calendar access and creates its own calendar named “Datebell” with your payment dates, free-trial end dates, document expiry dates and warranty end dates (item name and price). The app writes only to the Datebell calendar; it does not read, change or send off the device any events in your other calendars. The Datebell calendar is kept in your iPhone's default calendar account, so if that is iCloud, Apple syncs it to your other devices under Apple's terms. Turning the switch off removes the Datebell calendar.</p>
 
 <h2>5. Buying Pro</h2>
 <p>Pro is a one-time App Store purchase. Apple handles payment under the <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>. The app only learns from Apple whether your Apple Account owns Pro; we never see your payment details, and Pro is not tied to your Datebell account. Apple gives developers aggregated download and sales reports, and if you turn on “Share with App Developers” in iPhone Settings, Apple may also share crash reports and usage statistics that do not identify you.</p>
@@ -137,7 +137,7 @@
 <li><strong>Signing out:</strong> your items stay in the account until you delete it.</li>
 <li>If you can't delete your account in the app, email us from the account's address and we will delete it within 30 days.</li>
 </ul>
-<p>You can withdraw consent at any time by signing out or deleting your account, and by turning off notifications, microphone or speech recognition for Datebell in iPhone Settings.</p>
+<p>You can withdraw consent at any time by signing out or deleting your account, and by turning off notifications or calendar access for Datebell in iPhone Settings.</p>
 
 <h2>10. Your rights</h2>
 <p>Under Thailand's PDPA you have the right to access and get a copy of your personal data, to receive or transfer it, to object, to have it erased, to restrict its use and to correct it, and to complain to the Personal Data Protection Committee. You can edit, export and delete your data yourself in the app, or email us and we will reply within 30 days.</p>
