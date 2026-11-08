@@ -2,24 +2,176 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Datebell</title>
-<meta name="description" content="Datebell reminds you before subscriptions renew and cards, documents and warranties expire. Data stays on your iPhone, with optional account sync.">
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Datebell: เตือนก่อนตัดเงินและก่อนหมดอายุ</title>
+<meta name="description" content="Datebell เตือนก่อนหมดทดลองฟรี ก่อนตัดค่าสมาชิก และก่อนบัตร เอกสาร ประกันหมดอายุ ฟรีบน iPhone">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Datebell">
+<meta property="og:title" content="Datebell: รู้ก่อนวันตัดเงินและวันหมดอายุ">
+<meta property="og:description" content="เตือนก่อนหมดทดลองฟรี ก่อนตัดค่าสมาชิก และก่อนบัตร เอกสาร ประกันหมดอายุ ฟรีบน iPhone">
+<meta property="og:url" content="https://nn3tt.github.io/Datebell-site/">
+<meta property="og:image" content="https://nn3tt.github.io/Datebell-site/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="preload" as="image" href="img/th-1.webp">
+<style>
+:root{--ink:#14211C;--muted:#5A6762;--bg:#FFFFFF;--soft:#F3F5F4;--green:#168E6A;--green-ink:#0F6E52;--line:#E3E8E6}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Sukhumvit Set","Noto Sans Thai","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--green-ink)}
+.top{max-width:1040px;margin:0 auto;padding:14px 16px 0;display:flex;justify-content:flex-end}
+.lang{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px}
+.lang button{font:inherit;font-size:14px;border:0;background:none;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;min-height:32px}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+main{max-width:1040px;margin:0 auto;padding:8px 16px 40px;display:grid;gap:36px;align-items:center}
+.hero{text-align:center}
+.brand{display:inline-flex;align-items:center;gap:12px;margin:8px 0 22px}
+.brand img{width:60px;height:60px;border-radius:14px;box-shadow:0 2px 10px rgba(22,142,106,.18)}
+.brand span{font-size:30px;font-weight:800;letter-spacing:-.02em}
+h1{font-size:clamp(30px,8.4vw,48px);line-height:1.18;letter-spacing:-.02em;margin:0 auto 14px;max-width:13em;font-weight:800}
+h1 em{font-style:normal;color:var(--green)}
+.sub{color:var(--muted);font-size:clamp(16px,4.3vw,19px);max-width:30em;margin:0 auto}
+.cta{margin:28px 0 0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.cta a.badge{display:inline-block;padding:14px;line-height:0}
+.cta a.badge img{height:54px;width:auto;display:block}
+.cta small{color:var(--muted);font-size:14px}
+.demo{display:flex;flex-direction:column;align-items:center}
+.phone{position:relative;width:min(290px,74vw);aspect-ratio:600/1304;border-radius:46px;background:#0B0F0D;padding:10px;box-shadow:0 30px 60px -20px rgba(20,33,28,.35),0 0 0 1px #2A302D inset}
+.screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:#fff}
+.screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translateY(14px) scale(.985);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.screen img.on{opacity:1;transform:none}
+.island{position:absolute;top:18px;left:50%;width:30%;height:22px;margin-left:-15%;background:#0B0F0D;border-radius:20px;z-index:2}
+.tap{position:absolute;inset:0;border:0;background:none;cursor:pointer;z-index:3;border-radius:46px}
+.step{margin:22px 0 0;min-height:3.2em;text-align:center;max-width:22em}
+.step b{display:block;color:var(--green);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.step span{font-size:18px;font-weight:600}
+.dots{display:flex;gap:4px;margin-top:10px}
+.dots button{width:28px;height:28px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.dots button i{display:block;width:8px;height:8px;border-radius:8px;background:var(--line);transition:width .3s,background .3s}
+.dots button[aria-current="true"] i{width:22px;background:var(--green)}
+footer{border-top:1px solid var(--line);margin-top:8px}
+footer div{max-width:1040px;margin:0 auto;padding:22px 16px calc(28px + env(safe-area-inset-bottom));display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;color:var(--muted);font-size:14px}
+footer a{color:var(--muted)}
+[data-l]{display:none}
+html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
+@media (min-width:860px){
+  main{grid-template-columns:1.1fr .9fr;padding-top:24px;min-height:calc(100vh - 140px)}
+  .phone{width:min(300px,calc((100vh - 230px) * .46))}
+  .hero{text-align:left}
+  h1,.sub{margin-left:0}
+  .cta{align-items:flex-start}
+  .cta a.badge{margin-left:-14px}
+}
+@media (prefers-reduced-motion:reduce){.screen img{transition:none;transform:none}}
+</style>
 </head>
 <body>
+<div class="top">
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-set="th" aria-pressed="true" lang="th">ไทย</button>
+    <button type="button" data-set="en" aria-pressed="false" lang="en">English</button>
+  </div>
+</div>
 <main>
-<header><img src="icon.png" alt=""><a href="./">Datebell</a></header>
-<section class="lang-block" lang="th">
-<h1>Datebell</h1>
-<p>เตือนก่อนค่าสมาชิกต่ออายุ และก่อนบัตร เอกสาร และประกันสินค้าหมดอายุ ข้อมูลอยู่บน iPhone ของคุณ และซิงก์ผ่านบัญชีได้หากต้องการ</p>
-<p><a href="support.html#th">ช่วยเหลือและติดต่อ</a> · <a href="privacy.html#th">นโยบายความเป็นส่วนตัว</a></p>
-</section>
-<section class="lang-block" lang="en">
-<h1>Datebell</h1>
-<p>Reminders before subscriptions renew and before cards, documents and warranties expire. Your data stays on your iPhone, with optional account sync.</p>
-<p><a href="support.html#en">Support and contact</a> · <a href="privacy.html#en">Privacy Policy</a></p>
-</section>
+  <section class="hero">
+    <div class="brand"><img src="icon.png" alt="" width="60" height="60"><span>Datebell</span></div>
+    <h1><span data-l="th" lang="th">รู้ก่อน<em>วันตัดเงิน</em><br>และวันหมดอายุ</span><span data-l="en" lang="en">Know before it <em>renews</em> or&nbsp;expires</span></h1>
+    <p class="sub"><span data-l="th" lang="th">เตือนก่อนหมดทดลองฟรี ก่อนตัดค่าสมาชิก และก่อนบัตร เอกสาร ประกันหมดอายุ</span><span data-l="en" lang="en">Reminders before free trials end, subscriptions charge, and cards, documents and warranties expire.</span></p>
+    <div class="cta">
+      <a class="badge" id="store" href="https://apps.apple.com/app/id6821503223">
+        <img id="badge" src="img/badge-en.svg" alt="Download on the App Store" width="162" height="54">
+      </a>
+      <small><span data-l="th" lang="th">ฟรีบน iPhone</span><span data-l="en" lang="en">Free on iPhone</span></small>
+    </div>
+  </section>
+  <section class="demo" aria-label="How Datebell works">
+    <div class="phone">
+      <div class="screen" id="screen"><div class="island"></div></div>
+      <button class="tap" type="button" id="next" aria-label="Next screen"></button>
+    </div>
+    <p class="step" aria-live="polite"><b id="stepN"></b><span id="stepT"></span></p>
+    <div class="dots" id="dots"></div>
+  </section>
 </main>
+<footer><div>
+  <a href="support.html"><span data-l="th" lang="th">ช่วยเหลือและติดต่อ</span><span data-l="en" lang="en">Support</span></a>
+  <a href="privacy.html"><span data-l="th" lang="th">นโยบายความเป็นส่วนตัว</span><span data-l="en" lang="en">Privacy Policy</span></a>
+  <span>© 2026 Datebell</span>
+</div></footer>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var APP='6821503223',PT='129594804';
+  var ct=(q.get('ct')||'').trim();
+  var a=document.getElementById('store');
+  if(/^[A-Za-z0-9._-]{1,40}$/.test(ct)){
+    a.href='https://apps.apple.com/app/apple-store/id'+APP+'?pt='+PT+'&ct='+encodeURIComponent(ct)+'&mt=8';
+  }
+
+  var STEPS={
+    th:['เพิ่มค่าสมาชิก บัตร หรือนัดหมาย','รวมค่าสมาชิกไว้ที่เดียว เห็นยอดต่อเดือน','ใบขับขี่ พาสปอร์ต ประกัน เตือนก่อนหมดอายุ','นัดหมอ ฉีดวัคซีน เตือนล่วงหน้า','เปิดปฏิทิน รู้เลยว่าวันไหนจ่ายอะไร','แล้ว Datebell ก็เตือนก่อนถึงวัน'],
+    en:['Add a subscription, card or appointment','All your subscriptions in one place','Licence, passport, insurance: reminded before they expire','Doctor visits and vaccines, reminded ahead','See the whole month on a calendar','Then Datebell reminds you before the day']
+  };
+  var LABEL={th:'ขั้นที่ ',en:'Step '};
+  var BADGE={th:'https://tools.applemarketingtools.com/api/badges/download-on-the-app-store/black/th-th',en:'img/badge-en.svg'};
+  var BADGE_ALT={th:'ดาวน์โหลดบน App Store',en:'Download on the App Store'};
+  var N=6,i=0,lang,timer=null,imgs={};
+  var screen=document.getElementById('screen'),dots=document.getElementById('dots');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for(var k=0;k<N;k++){
+    var d=document.createElement('button');d.type='button';d.innerHTML='<i></i>';
+    d.setAttribute('aria-label',String(k+1));
+    d.onclick=(function(n){return function(){go(n);restart();}})(k);
+    dots.appendChild(d);
+  }
+  function load(l){
+    if(imgs[l])return imgs[l];
+    imgs[l]=[];
+    for(var k=0;k<N;k++){
+      var im=new Image();im.src='img/'+l+'-'+(k+1)+'.webp';im.alt='';im.decoding='async';
+      im.width=600;im.height=1304;imgs[l].push(im);
+    }
+    return imgs[l];
+  }
+  function go(n){
+    i=(n+N)%N;
+    var list=imgs[lang];
+    Array.prototype.forEach.call(screen.querySelectorAll('img'),function(im){im.classList.toggle('on',im===list[i]);});
+    document.getElementById('stepN').textContent=LABEL[lang]+(i+1)+'/'+N;
+    document.getElementById('stepT').textContent=STEPS[lang][i];
+    Array.prototype.forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false');});
+  }
+  function restart(){
+    clearInterval(timer);timer=null;
+    if(!reduce&&!document.hidden)timer=setInterval(function(){go(i+1);},2800);
+  }
+  function setLang(l){
+    lang=l;document.documentElement.lang=l;
+    try{localStorage.setItem('db-lang',l);}catch(e){}
+    Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){b.setAttribute('aria-pressed',b.dataset.set===l?'true':'false');});
+    Array.prototype.forEach.call(screen.querySelectorAll('img'),function(im){im.remove();});
+    load(l).forEach(function(im){screen.appendChild(im);});
+    var b=document.getElementById('badge');
+    b.onerror=function(){b.onerror=null;b.src=BADGE.en;};
+    b.src=BADGE[l];b.alt=BADGE_ALT[l];
+    go(i);restart();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.set);};});
+  document.getElementById('next').onclick=function(){go(i+1);restart();};
+  document.addEventListener('visibilitychange',restart);
+
+  var saved=null;try{saved=localStorage.getItem('db-lang');}catch(e){}
+  var start=q.get('lang')==='en'||q.get('lang')==='th'?q.get('lang')
+    :/-th-|^th-|-th$/.test(ct)?'th'
+    :saved||(/^th\b/i.test(navigator.language||'')?'th':(ct?'th':'en'));
+  setLang(start);
+})();
+</script>
 </body>
 </html>
