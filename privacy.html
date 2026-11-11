@@ -14,7 +14,7 @@
 
 <section class="lang-block" id="th" lang="th">
 <h1>นโยบายความเป็นส่วนตัว</h1>
-<p class="meta">มีผลตั้งแต่ 8 พฤศจิกายน 2569 · ใช้กับ Datebell เวอร์ชัน 1.2.3 ขึ้นไปบน iPhone</p>
+<p class="meta">มีผลตั้งแต่ 11 พฤศจิกายน 2569 · ใช้กับ Datebell เวอร์ชัน 1.2.3 ขึ้นไปบน iPhone</p>
 <p class="summary"><strong>สรุปสั้น ๆ:</strong> ถ้าคุณไม่ลงชื่อเข้าใช้ ข้อมูลทั้งหมดอยู่บน iPhone ของคุณเท่านั้น และเราไม่ได้รับข้อมูลใดเลย การลงชื่อเข้าใช้เป็นตัวเลือก และใช้เพื่อการซิงก์เท่านั้น เมื่อคุณลงชื่อเข้าใช้ อีเมลและรายการของคุณจะถูกเก็บไว้ในบัญชีของคุณบน Google Firebase แอปไม่มีโฆษณา ไม่มีเครื่องมือวิเคราะห์หรือติดตาม และเราไม่ขายข้อมูล</p>
 
 <h2>ผู้ควบคุมข้อมูล</h2>
@@ -34,6 +34,7 @@
 <ul>
 <li><strong>ข้อมูลบัญชี:</strong> อีเมล (หากใช้ Sign in with Apple และเลือกซ่อนอีเมล จะเป็นอีเมลส่งต่อของ Apple) รหัสผู้ใช้ที่ Firebase สร้างขึ้น วิธีที่ใช้ลงชื่อเข้าใช้ และเวลาที่สร้างบัญชีและลงชื่อเข้าใช้ล่าสุด หากใช้ Google ลงชื่อเข้าใช้ Google อาจส่งชื่อและลิงก์รูปโปรไฟล์มาด้วย รหัสผ่านของบัญชีอีเมลเก็บโดย Firebase ในรูปแบบที่เข้ารหัสทางเดียว เราไม่เห็นรหัสผ่าน</li>
 <li><strong>สำเนารายการของคุณ:</strong> ทุกรายการตามข้อ 1 พร้อมเวลาที่แก้ไข และเครื่องหมายว่ารายการใดถูกลบ เพื่อให้ iPhone ทุกเครื่องในบัญชีตรงกัน</li>
+<li><strong>รูปโปรไฟล์ (ถ้าคุณเลือกไว้):</strong> สำเนาขนาดเล็ก (256 พิกเซล) เพื่อให้รูปตามไปยัง iPhone เครื่องอื่นที่ลงชื่อเข้าใช้บัญชีเดียวกัน หากลบรูปในแอป รูปในบัญชีก็จะถูกลบด้วย</li>
 <li><strong>บันทึกทางเทคนิค:</strong> Firebase Authentication เก็บที่อยู่ IP ที่ใช้ลงชื่อเข้าใช้ไว้ประมาณไม่กี่สัปดาห์เพื่อความปลอดภัย</li>
 </ul>
 <p><strong>วัตถุประสงค์และฐานทางกฎหมาย:</strong> เพื่อให้บริการบัญชีและการซิงก์ที่คุณขอเท่านั้น (จำเป็นเพื่อปฏิบัติตามสัญญากับคุณ มาตรา 24(3)) ไม่ใช้เพื่อโฆษณา วิเคราะห์ หรือติดตาม หากคุณไม่ลงชื่อเข้าใช้ แอปยังใช้งานได้ครบ เพียงไม่มีการซิงก์</p>
@@ -51,7 +52,7 @@
 <p>Pro ซื้อครั้งเดียวผ่าน App Store การชำระเงินดำเนินการโดย Apple ตาม <a href="https://www.apple.com/legal/privacy/th/">นโยบายความเป็นส่วนตัวของ Apple</a> แอปรับจาก Apple เพียงว่าบัญชี Apple ของคุณมีสิทธิ์ Pro หรือไม่ เราไม่เห็นข้อมูลการชำระเงินของคุณ และสิทธิ์ Pro ไม่ได้ผูกกับบัญชี Datebell Apple ให้รายงานยอดดาวน์โหลดและยอดขายแบบรวมแก่นักพัฒนา และหากคุณเปิด “แชร์กับนักพัฒนาแอป” ในการตั้งค่า iPhone Apple อาจส่งรายงานการขัดข้องและสถิติการใช้งานที่ไม่ระบุตัวตนให้เราด้วย</p>
 
 <h2>6. ภาพหน้าจอ รูปโปรไฟล์ และอีเมล</h2>
-<p>เมื่อใช้ “นำเข้าจากภาพหน้าจอ” คุณเลือกภาพเอง แอปอ่านตัวอักษรในภาพบน iPhone ด้วยระบบอ่านข้อความของ Apple และไม่อัปโหลดภาพ แอปบันทึกเฉพาะรายการที่คุณเลือกเพิ่ม เหมือนรายการที่พิมพ์เอง รูปโปรไฟล์ที่คุณเลือกเก็บไว้บน iPhone เครื่องนี้เท่านั้น</p>
+<p>เมื่อใช้ “นำเข้าจากภาพหน้าจอ” คุณเลือกภาพเอง แอปอ่านตัวอักษรในภาพบน iPhone ด้วยระบบอ่านข้อความของ Apple และไม่อัปโหลดภาพ แอปบันทึกเฉพาะรายการที่คุณเลือกเพิ่ม เหมือนรายการที่พิมพ์เอง รูปโปรไฟล์ที่คุณเลือกเก็บไว้บน iPhone เครื่องนี้ และหากคุณลงชื่อเข้าใช้ สำเนาขนาดเล็กจะเก็บในบัญชีของคุณด้วย (ข้อ 2)</p>
 <p>“แจ้งปัญหา” และ “ขอฟีเจอร์ใหม่” จะเปิดอีเมลในแอปเมลของคุณ เราได้รับเฉพาะสิ่งที่คุณเลือกส่ง หาก iPhone ของคุณสำรองข้อมูลไปยัง iCloud ข้อมูลของแอปอาจรวมอยู่ในข้อมูลสำรองของเครื่องตามเงื่อนไขของ Apple</p>
 
 <h2>7. ลิงก์ภายนอกและอัตราแลกเปลี่ยน</h2>
@@ -64,7 +65,7 @@
 <h2>9. ระยะเวลาเก็บและการลบ</h2>
 <ul>
 <li><strong>ในเครื่อง:</strong> อยู่จนกว่าคุณจะลบรายการหรือลบแอป</li>
-<li><strong>ในบัญชี:</strong> อยู่ตราบที่บัญชียังอยู่ ไปที่ ตั้งค่า แตะบัญชีของคุณ แล้วแตะ “ลบบัญชี” เพื่อลบรายการทั้งหมดในบัญชีและลบบัญชีทันที (สำหรับ Sign in with Apple แอปจะเพิกถอนการเชื่อมต่อกับ Apple ด้วย) คุณเลือกได้ว่าจะเก็บหรือลบรายการในเครื่องนี้ Google ลบข้อมูลที่ถูกลบออกจากระบบสำรองภายใน 180 วัน</li>
+<li><strong>ในบัญชี:</strong> อยู่ตราบที่บัญชียังอยู่ ไปที่ ตั้งค่า แตะบัญชีของคุณ แล้วแตะ “ลบบัญชี” เพื่อลบรายการทั้งหมดและรูปโปรไฟล์ในบัญชี และลบบัญชีทันที (สำหรับ Sign in with Apple แอปจะเพิกถอนการเชื่อมต่อกับ Apple ด้วย) คุณเลือกได้ว่าจะเก็บหรือลบรายการในเครื่องนี้ Google ลบข้อมูลที่ถูกลบออกจากระบบสำรองภายใน 180 วัน</li>
 <li><strong>ออกจากระบบ:</strong> รายการยังอยู่ในบัญชีจนกว่าคุณจะลบบัญชี</li>
 <li>หากลบบัญชีในแอปไม่ได้ ส่งอีเมลถึงเราจากอีเมลของบัญชีนั้น แล้วเราจะลบให้ภายใน 30 วัน</li>
 </ul>
@@ -85,7 +86,7 @@
 
 <section class="lang-block" id="en" lang="en">
 <h1>Privacy Policy</h1>
-<p class="meta">Effective 8 November 2026 · Applies to Datebell version 1.2.3 and later for iPhone</p>
+<p class="meta">Effective 11 November 2026 · Applies to Datebell version 1.2.3 and later for iPhone</p>
 <p class="summary"><strong>In short:</strong> if you don't sign in, everything stays on your iPhone and we receive nothing. Signing in is optional and is used only for sync. When you sign in, your email and your items are stored in your account on Google Firebase. There are no ads, no analytics and no tracking, and we never sell data.</p>
 
 <h2>Who is responsible</h2>
@@ -105,6 +106,7 @@
 <ul>
 <li><strong>Account details:</strong> your email address (if you use Sign in with Apple and choose Hide My Email, this is an Apple relay address), a user ID created by Firebase, the sign-in method, and when the account was created and last signed in. If you sign in with Google, Google may also pass your name and a link to your profile picture. Passwords for email accounts are stored by Firebase as one-way hashes; we never see them.</li>
 <li><strong>A copy of your items:</strong> everything listed in section 1, with the time each was changed and a marker for deleted items, so every iPhone on the account stays in step.</li>
+<li><strong>Your profile photo, if you chose one:</strong> a small copy (256 pixels), so the photo follows you to your other iPhones on the same account. Removing the photo in the app removes it from the account too.</li>
 <li><strong>Technical logs:</strong> Firebase Authentication keeps the IP addresses used to sign in for a few weeks for security.</li>
 </ul>
 <p><strong>Purpose and legal basis:</strong> only to provide the account and sync you asked for (necessary to perform our contract with you, PDPA section 24(3)). Not for advertising, analytics or tracking. Without an account the app still works fully, just without sync.</p>
@@ -122,7 +124,7 @@
 <p>Pro is a one-time App Store purchase. Apple handles payment under the <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a>. The app only learns from Apple whether your Apple Account owns Pro; we never see your payment details, and Pro is not tied to your Datebell account. Apple gives developers aggregated download and sales reports, and if you turn on “Share with App Developers” in iPhone Settings, Apple may also share crash reports and usage statistics that do not identify you.</p>
 
 <h2>6. Screenshots, profile photo and email</h2>
-<p>When you use Import from screenshot, you pick the pictures yourself. The app reads the words in them on your iPhone with Apple's text recognition and never uploads the pictures. Only the items you choose to add are saved, the same as items you type. A profile photo you choose stays on this iPhone.</p>
+<p>When you use Import from screenshot, you pick the pictures yourself. The app reads the words in them on your iPhone with Apple's text recognition and never uploads the pictures. Only the items you choose to add are saved, the same as items you type. A profile photo you choose is kept on this iPhone and, if you sign in, a small copy is kept in your account (section 2).</p>
 <p>Report a problem and Suggest a feature open an email in your Mail app; we receive only what you choose to send. If your iPhone backs up to iCloud, the app's data may be included in that device backup under Apple's terms.</p>
 
 <h2>7. Links to other sites and exchange rates</h2>
@@ -135,7 +137,7 @@
 <h2>9. Keeping and deleting your data</h2>
 <ul>
 <li><strong>On your iPhone:</strong> kept until you delete items or the app.</li>
-<li><strong>In your account:</strong> kept while the account exists. Open Settings, tap your account, then tap Delete account to delete every item in the account and the account itself straight away (for Sign in with Apple, the app also revokes its link to your Apple Account). You choose whether to keep or remove the items on that iPhone. Google removes deleted data from its backup systems within 180 days.</li>
+<li><strong>In your account:</strong> kept while the account exists. Open Settings, tap your account, then tap Delete account to delete every item and the profile photo in the account, and the account itself, straight away (for Sign in with Apple, the app also revokes its link to your Apple Account). You choose whether to keep or remove the items on that iPhone. Google removes deleted data from its backup systems within 180 days.</li>
 <li><strong>Signing out:</strong> your items stay in the account until you delete it.</li>
 <li>If you can't delete your account in the app, email us from the account's address and we will delete it within 30 days.</li>
 </ul>
