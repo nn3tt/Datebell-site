@@ -49,7 +49,7 @@ h1 em{font-style:normal;color:var(--green)}
 .tap{position:absolute;inset:0;border:0;background:none;cursor:pointer;z-index:3;border-radius:46px}
 .step{margin:22px 0 0;min-height:3.2em;text-align:center;max-width:22em}
 .step b{display:block;color:var(--green);font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
-.step span{font-size:18px;font-weight:600}
+.step span{font-size:18px;font-weight:600;text-wrap:balance;display:block}
 .dots{display:flex;gap:4px;margin-top:10px}
 .dots button{width:28px;height:28px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 .dots button i{display:block;width:8px;height:8px;border-radius:8px;background:var(--line);transition:width .3s,background .3s}
@@ -59,15 +59,35 @@ footer div{max-width:1040px;margin:0 auto;padding:22px 16px calc(28px + env(safe
 footer a{color:var(--muted)}
 [data-l]{display:none}
 html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
+/* device switch + iPhone Duo */
+.dev{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px;margin:0 0 18px}
+.dev button{font:inherit;font-size:15px;border:0;background:none;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer;min-height:40px}
+.dev button[aria-pressed="true"]{background:var(--green);color:#fff;font-weight:600}
+.dev button:focus-visible,.lang button:focus-visible{outline:2px solid var(--green-ink);outline-offset:2px}
+.demo{--dw:min(420px,calc(100vw - 40px));--k:1.12}
+.duo-stage{width:var(--dw);height:calc(var(--dw) * var(--k));display:none;place-items:center}
+.demo.is-duo .phone{display:none}
+.demo.is-duo .duo-stage{display:grid}
+.duo{position:relative;border-radius:30px;background:#0B0F0D;padding:8px;box-shadow:0 30px 60px -20px rgba(20,33,28,.35),0 0 0 1px #2A302D inset;transition:width .6s cubic-bezier(.2,.8,.2,1),height .6s cubic-bezier(.2,.8,.2,1)}
+.duo.wide{width:var(--dw);height:calc((var(--dw) - 16px) / 1.4218 + 16px)}
+.duo.tall{height:calc(var(--dw) * var(--k));width:calc((var(--dw) * var(--k) - 16px) * .7038 + 16px)}
+.duo.fold{height:calc(var(--dw) * var(--k));width:calc((var(--dw) * var(--k) - 16px) * .687 + 16px)}
+.duo .screen{border-radius:22px}
+.duo .screen img{object-fit:cover;object-position:center top}
+.duo .crease{position:absolute;z-index:2;pointer-events:none;opacity:0;transition:opacity .4s}
+.duo.wide .crease{opacity:1;top:8px;bottom:8px;left:50%;width:2px;margin-left:-1px;background:linear-gradient(90deg,rgba(0,0,0,.05),rgba(255,255,255,.5),rgba(0,0,0,.05))}
+.duo.tall .crease{opacity:1;left:8px;right:8px;top:50%;height:2px;margin-top:-1px;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(255,255,255,.5),rgba(0,0,0,.05))}
+.duo .tap{border-radius:30px}
 @media (min-width:860px){
   main{grid-template-columns:1.1fr .9fr;padding-top:24px;min-height:calc(100vh - 140px)}
-  .phone{width:min(300px,calc((100vh - 230px) * .46))}
+  .phone{width:min(300px,calc((100vh - 290px) * .46))}
   .hero{text-align:left}
   h1,.sub{margin-left:0}
   .cta{align-items:flex-start}
   .cta a.badge{margin-left:-14px}
+  .demo{--dw:min(460px,42vw,calc((100vh - 280px) / .95));--k:.95}
 }
-@media (prefers-reduced-motion:reduce){.screen img{transition:none;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen img{transition:none;transform:none}.duo{transition:none}}
 </style>
 </head>
 <body>
@@ -89,10 +109,21 @@ html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
       <small><span data-l="th" lang="th">ฟรีบน iPhone</span><span data-l="en" lang="en">Free on iPhone</span></small>
     </div>
   </section>
-  <section class="demo" aria-label="How Datebell works">
+  <section class="demo" id="demo" aria-label="How Datebell works">
+    <div class="dev" role="group" id="devs" aria-label="Device">
+      <button type="button" data-dev="phone" aria-pressed="true">iPhone</button>
+      <button type="button" data-dev="duo" aria-pressed="false">iPhone Duo</button>
+    </div>
     <div class="phone">
       <div class="screen" id="screen"><div class="island"></div></div>
       <button class="tap" type="button" id="next" aria-label="Next screen"></button>
+    </div>
+    <div class="duo-stage">
+      <div class="duo wide" id="duo">
+        <div class="screen" id="duoScreen"></div>
+        <div class="crease"></div>
+        <button class="tap" type="button" id="duoNext" aria-label="Next screen"></button>
+      </div>
     </div>
     <p class="step" aria-live="polite"><b id="stepN"></b><span id="stepT"></span></p>
     <div class="dots" id="dots"></div>
@@ -117,34 +148,56 @@ html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
     th:['เปิดมาก็เจอแอปที่คุณใช้อยู่','แตะ Netflix ใส่ราคากับวันที่ แล้วบันทึก','ทุกวันสำคัญอยู่ในหน้าเดียว','Datebell เตือนก่อนทดลองฟรีหมด 2 วัน','ไม่ใช้ต่อ? มีวิธียกเลิกให้เลย','เห็นยอดค่าสมาชิกรวมต่อเดือน'],
     en:['Open it and your apps are already there','Tap Netflix, add the price and date, save','Every date on one screen','Reminded 2 days before the trial ends','Not keeping it? The steps to cancel are right there','See what you pay each month']
   };
+  var DUO_STEPS={
+    th:['กางจอ รายการอยู่ซ้าย รายละเอียดอยู่ขวา','เพิ่มของใหม่ทางขวา รายการเดิมก็ยังอยู่ทางซ้าย','ตั้งจอขึ้น ก็เห็นครบในหน้าเดียว','พับจอแล้ว ปุ่ม + ก็อยู่ใกล้นิ้วโป้ง','ติ๊กจ่ายแล้วได้ด้วยมือเดียว'],
+    en:['Unfold it: your list on the left, details on the right','Add something new on the right, your list stays put','Turn it upright and it all fits on one screen','Folded, the + button sits right by your thumb','Tick off payments with one hand']
+  };
+  var DUO_SHAPE=['wide','wide','tall','fold','fold'];
+  var DUO_SIZE={wide:[1200,844],tall:[720,1023],fold:[720,1048]};
   var LABEL={th:'ขั้นที่ ',en:'Step '};
+  var DEV_LABEL={th:'ดูบนเครื่อง',en:'Device'};
   var BADGE={th:'https://tools.applemarketingtools.com/api/badges/download-on-the-app-store/black/th-th',en:'img/badge-en.svg'};
   var BADGE_ALT={th:'ดาวน์โหลดบน App Store',en:'Download on the App Store'};
-  var N=6,i=0,lang,timer=null,imgs={};
+  var N=6,i=0,lang,dev='phone',timer=null,imgs={};
   var screen=document.getElementById('screen'),dots=document.getElementById('dots');
+  var duoScreen=document.getElementById('duoScreen'),duo=document.getElementById('duo'),demo=document.getElementById('demo');
+  function cur(){return dev==='duo'?duoScreen:screen;}
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  for(var k=0;k<N;k++){
-    var d=document.createElement('button');d.type='button';d.innerHTML='<i></i>';
-    d.setAttribute('aria-label',String(k+1));
-    d.onclick=(function(n){return function(){go(n);restart();}})(k);
-    dots.appendChild(d);
+  function makeDots(){
+    dots.innerHTML='';
+    for(var k=0;k<N;k++){
+      var d=document.createElement('button');d.type='button';d.innerHTML='<i></i>';
+      d.setAttribute('aria-label',String(k+1));
+      d.onclick=(function(n){return function(){go(n);restart();}})(k);
+      dots.appendChild(d);
+    }
   }
   function load(l){
-    if(imgs[l])return imgs[l];
-    imgs[l]=[];
+    var key=dev+'-'+l;
+    if(imgs[key])return imgs[key];
+    imgs[key]=[];
     for(var k=0;k<N;k++){
-      var im=new Image();im.src='img/'+l+'-'+(k+1)+'.webp';im.alt='';im.decoding='async';
-      im.width=600;im.height=1304;imgs[l].push(im);
+      var im=new Image();im.alt='';im.decoding='async';
+      if(dev==='duo'){var sz=DUO_SIZE[DUO_SHAPE[k]];im.src='img/duo-'+l+'-'+(k+1)+'.webp';im.width=sz[0];im.height=sz[1];}
+      else{im.src='img/'+l+'-'+(k+1)+'.webp';im.width=600;im.height=1304;}
+      imgs[key].push(im);
     }
-    return imgs[l];
+    return imgs[key];
+  }
+  function show(){
+    var box=cur();
+    Array.prototype.forEach.call(screen.querySelectorAll('img'),function(im){im.remove();});
+    Array.prototype.forEach.call(duoScreen.querySelectorAll('img'),function(im){im.remove();});
+    load(lang).forEach(function(im){box.appendChild(im);});
   }
   function go(n){
     i=(n+N)%N;
-    var list=imgs[lang];
-    Array.prototype.forEach.call(screen.querySelectorAll('img'),function(im){im.classList.toggle('on',im===list[i]);});
+    var list=imgs[dev+'-'+lang];
+    Array.prototype.forEach.call(cur().querySelectorAll('img'),function(im){im.classList.toggle('on',im===list[i]);});
+    if(dev==='duo')duo.className='duo '+DUO_SHAPE[i];
     document.getElementById('stepN').textContent=LABEL[lang]+(i+1)+'/'+N;
-    document.getElementById('stepT').textContent=STEPS[lang][i];
+    document.getElementById('stepT').textContent=(dev==='duo'?DUO_STEPS:STEPS)[lang][i];
     Array.prototype.forEach.call(dots.children,function(d,k){d.setAttribute('aria-current',k===i?'true':'false');});
   }
   function restart(){
@@ -155,8 +208,8 @@ html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
     lang=l;document.documentElement.lang=l;
     try{localStorage.setItem('db-lang',l);}catch(e){}
     Array.prototype.forEach.call(document.querySelectorAll('.lang button'),function(b){b.setAttribute('aria-pressed',b.dataset.set===l?'true':'false');});
-    Array.prototype.forEach.call(screen.querySelectorAll('img'),function(im){im.remove();});
-    load(l).forEach(function(im){screen.appendChild(im);});
+    document.getElementById('devs').setAttribute('aria-label',DEV_LABEL[l]);
+    show();
     var b=document.getElementById('badge');
     b.onerror=function(){b.onerror=null;b.src=BADGE.en;};
     b.src=BADGE[l];b.alt=BADGE_ALT[l];
@@ -164,6 +217,17 @@ html[lang="th"] [data-l="th"],html[lang="en"] [data-l="en"]{display:revert}
   }
   document.querySelectorAll('.lang button').forEach(function(b){b.onclick=function(){setLang(b.dataset.set);};});
   document.getElementById('next').onclick=function(){go(i+1);restart();};
+  document.getElementById('duoNext').onclick=function(){go(i+1);restart();};
+  function setDev(d,keep){
+    if(d===dev&&keep)return;
+    dev=d;N=d==='duo'?5:6;i=0;
+    demo.classList.toggle('is-duo',d==='duo');
+    Array.prototype.forEach.call(document.querySelectorAll('.dev button'),function(b){b.setAttribute('aria-pressed',b.dataset.dev===d?'true':'false');});
+    makeDots();
+    if(lang){show();go(0);restart();}
+  }
+  document.querySelectorAll('.dev button').forEach(function(b){b.onclick=function(){setDev(b.dataset.dev,true);};});
+  setDev(/^duo$/i.test(q.get('device')||'')?'duo':'phone');
   document.addEventListener('visibilitychange',restart);
 
   var saved=null;try{saved=localStorage.getItem('db-lang');}catch(e){}
