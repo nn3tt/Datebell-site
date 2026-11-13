@@ -15,7 +15,7 @@
 <section class="lang-block" id="th" lang="th">
 <h1>นโยบายความเป็นส่วนตัว</h1>
 <p class="meta">มีผลตั้งแต่ 11 พฤศจิกายน 2569 · ใช้กับ Datebell เวอร์ชัน 1.2.3 ขึ้นไปบน iPhone</p>
-<p class="summary"><strong>สรุปสั้น ๆ:</strong> ถ้าคุณไม่ลงชื่อเข้าใช้ ข้อมูลทั้งหมดอยู่บน iPhone ของคุณเท่านั้น และเราไม่ได้รับข้อมูลใดเลย การลงชื่อเข้าใช้เป็นตัวเลือก และใช้เพื่อการซิงก์เท่านั้น เมื่อคุณลงชื่อเข้าใช้ อีเมลและรายการของคุณจะถูกเก็บไว้ในบัญชีของคุณบน Google Firebase แอปไม่มีโฆษณา ไม่มีเครื่องมือวิเคราะห์หรือติดตาม และเราไม่ขายข้อมูล</p>
+<p class="summary"><strong>สรุปสั้น ๆ:</strong> ถ้าคุณไม่ลงชื่อเข้าใช้ รายการทั้งหมดอยู่บน iPhone ของคุณเท่านั้น การลงชื่อเข้าใช้เป็นตัวเลือก และใช้เพื่อการซิงก์เท่านั้น เมื่อคุณลงชื่อเข้าใช้ อีเมลและรายการของคุณจะถูกเก็บไว้ในบัญชีของคุณบน Google Firebase เราไม่ส่งรายการของคุณให้ผู้ลงโฆษณา ตั้งแต่เวอร์ชัน 1.4.2 แอปมี Meta SDK เพื่อวัดว่าโฆษณาบน Facebook และ Instagram ตัวไหนทำให้มีคนดาวน์โหลด (ข้อ 8) แอปไม่แสดงโฆษณา และเราไม่ขายข้อมูล</p>
 
 <h2>ผู้ควบคุมข้อมูล</h2>
 <p>Datebell พัฒนาโดยนักพัฒนาอิสระในประเทศไทย (“เรา”) ซึ่งเป็นผู้ควบคุมข้อมูลส่วนบุคคลตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ติดต่อเรื่องความเป็นส่วนตัวได้ที่ <a href="mailto:smbt.net@gmail.com">smbt.net@gmail.com</a></p>
@@ -60,7 +60,8 @@
 <p>หากคุณมีค่าสมาชิกที่ยังติดตามอยู่และมีราคาเป็นสกุลเงินอื่นที่ไม่ใช่บาท แอปจะดาวน์โหลดอัตราแลกเปลี่ยนอ้างอิงรายวันที่ธนาคารกลางยุโรปเผยแพร่ (<a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">ecb.europa.eu</a>) ไม่เกินวันละครั้ง เพื่อแสดงยอดรวมโดยประมาณเป็นบาท คำขอนี้ไม่ส่งข้อมูลรายการหรือข้อมูลบัญชีของคุณ แต่เหมือนการเปิดเว็บไซต์ทั่วไป เซิร์ฟเวอร์ของธนาคารกลางยุโรปจะเห็นที่อยู่ IP ของคุณ</p>
 
 <h2>8. การแบ่งปันข้อมูล</h2>
-<p>เราไม่ขาย ไม่ให้เช่า และไม่แบ่งปันข้อมูลส่วนบุคคลของคุณเพื่อโฆษณา ผู้รับข้อมูลมีเพียง Google Firebase ในฐานะผู้ประมวลผลตามข้อ 2 (เฉพาะเมื่อคุณลงชื่อเข้าใช้) และหน่วยงานรัฐเมื่อกฎหมายบังคับ หากเราจะใช้ผู้ให้บริการรายอื่น เราจะกำหนดให้คุ้มครองข้อมูลในระดับเดียวกับนโยบายนี้หรือดีกว่า และจะปรับนโยบายนี้ก่อนเริ่มใช้ แอปไม่มี SDK โฆษณา วิเคราะห์ หรือติดตาม และไม่ติดตามคุณข้ามแอปหรือเว็บไซต์</p>
+<p>เราไม่ขายและไม่ให้เช่าข้อมูลส่วนบุคคลของคุณ และไม่แบ่งปันรายการ โน้ต รูป หรือข้อมูลบัญชีของคุณเพื่อโฆษณา ผู้รับข้อมูลมี Google Firebase ในฐานะผู้ประมวลผลตามข้อ 2 (เฉพาะเมื่อคุณลงชื่อเข้าใช้) Meta ตามที่อธิบายด้านล่าง และหน่วยงานรัฐเมื่อกฎหมายบังคับ หากเราจะใช้ผู้ให้บริการรายอื่น เราจะกำหนดให้คุ้มครองข้อมูลในระดับเดียวกับนโยบายนี้หรือดีกว่า และจะปรับนโยบายนี้ก่อนเริ่มใช้</p>
+<p><strong>การวัดผลโฆษณา (Meta) ตั้งแต่เวอร์ชัน 1.4.2:</strong> เราลงโฆษณา Datebell บน Facebook และ Instagram แอปจึงมี Meta SDK ของ Meta Platforms ไว้ดูว่าโฆษณาไหนทำให้มีคนดาวน์โหลด พอคุณเปิดแอป SDK จะส่งเหตุการณ์ในแอปให้ Meta เช่น การเปิดแอปครั้งแรกและการเปิดครั้งต่อ ๆ ไป พร้อมข้อมูลทางเทคนิค เช่น รุ่น iPhone เวอร์ชัน iOS ภาษา เขตเวลา และที่อยู่ IP ถ้าคุณแตะ “อนุญาต” ตอนที่ iOS ถามว่าจะให้ Datebell ติดตามหรือไม่ SDK จะส่งรหัสโฆษณาของ iPhone (IDFA) ไปด้วย Meta เชื่อมรหัสนี้กับบัญชี Facebook หรือ Instagram ของคุณได้ เพื่อวัดผลและปรับปรุงโฆษณา ถ้าคุณแตะ “ขอให้แอปไม่ติดตาม” แอปจะไม่ส่ง IDFA และ Meta ใช้ข้อมูลเพื่อวัดผลแบบรวมตามกฎของ Apple เท่านั้น คุณเปลี่ยนตัวเลือกได้ทุกเมื่อใน การตั้งค่า › ความเป็นส่วนตัวและความปลอดภัย › การติดตาม Meta ใช้ข้อมูลนี้ในฐานะผู้ควบคุมข้อมูลอีกรายตาม<a href="https://www.facebook.com/privacy/policy/">นโยบายความเป็นส่วนตัวของ Meta</a> และอาจประมวลผลนอกประเทศไทย รวมถึงสหรัฐอเมริกา ฐานทางกฎหมายคือประโยชน์โดยชอบด้วยกฎหมายของเราในการวัดผลโฆษณาของตัวเอง (มาตรา 24(5)) และความยินยอมของคุณสำหรับ IDFA (มาตรา 19)</p>
 
 <h2>9. ระยะเวลาเก็บและการลบ</h2>
 <ul>
@@ -87,7 +88,7 @@
 <section class="lang-block" id="en" lang="en">
 <h1>Privacy Policy</h1>
 <p class="meta">Effective 11 November 2026 · Applies to Datebell version 1.2.3 and later for iPhone</p>
-<p class="summary"><strong>In short:</strong> if you don't sign in, everything stays on your iPhone and we receive nothing. Signing in is optional and is used only for sync. When you sign in, your email and your items are stored in your account on Google Firebase. There are no ads, no analytics and no tracking, and we never sell data.</p>
+<p class="summary"><strong>In short:</strong> if you don't sign in, your items stay only on your iPhone. Signing in is optional and is used only for sync. When you sign in, your email and your items are stored in your account on Google Firebase. Your items never go to advertisers. From version 1.4.2 the app includes the Meta SDK to measure which Facebook and Instagram ads lead to downloads (section 8). The app shows no ads, and we never sell data.</p>
 
 <h2>Who is responsible</h2>
 <p>Datebell is made by an independent developer in Thailand (“we”), the data controller under Thailand's Personal Data Protection Act B.E. 2562 (2019). For privacy questions, email <a href="mailto:smbt.net@gmail.com">smbt.net@gmail.com</a>.</p>
@@ -132,7 +133,8 @@
 <p>If you track an active subscription priced in a currency other than baht, the app downloads the daily reference exchange rates published by the European Central Bank (<a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">ecb.europa.eu</a>), at most once a day, to show an approximate total in baht. The request sends nothing about your items or your account, but, as with any website, the ECB's server sees your IP address.</p>
 
 <h2>8. Sharing</h2>
-<p>We do not sell, rent or share your personal data for advertising. The only recipients are Google Firebase as our processor under section 2 (only if you sign in) and authorities where the law requires it. If we ever use another provider, we will require it to protect data at least as well as this policy does, and update this policy first. The app contains no advertising, analytics or tracking SDKs and does not track you across other apps or websites.</p>
+<p>We do not sell or rent your personal data, and we never share your items, notes, photos or account details for advertising. The recipients are Google Firebase as our processor under section 2 (only if you sign in), Meta as described below, and authorities where the law requires it. If we ever use another provider, we will require it to protect data at least as well as this policy does, and update this policy first.</p>
+<p><strong>Ad measurement (Meta), from version 1.4.2:</strong> we advertise Datebell on Facebook and Instagram, so the app includes the Meta SDK from Meta Platforms to learn which ads lead to downloads. When you open the app, the SDK sends Meta app events, such as the first launch and later app opens, with technical information such as the iPhone model, iOS version, language, time zone and IP address. If you tap Allow when iOS asks whether Datebell may track you, the SDK also sends your iPhone's advertising identifier (IDFA), which Meta can link to your Facebook or Instagram account to measure and improve ads. If you tap Ask App Not to Track, the IDFA is not sent, and Meta uses the data only for aggregated measurement under Apple's rules. You can change your choice any time in iPhone Settings › Privacy &amp; Security › Tracking. Meta uses this data as a separate controller under its own <a href="https://www.facebook.com/privacy/policy/">Privacy Policy</a> and may process it outside Thailand, including in the United States. The legal basis is our legitimate interest in measuring our own advertising (PDPA section 24(5)), and your consent for the IDFA (section 19).</p>
 
 <h2>9. Keeping and deleting your data</h2>
 <ul>
